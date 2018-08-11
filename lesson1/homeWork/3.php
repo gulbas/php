@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: vladilenUstinov
- * Date: 28.07.2018
- * Time: 19:28
+ * Developed by: &nbsp;
+ * Date: 11.08.2018
  */
 
 /*
