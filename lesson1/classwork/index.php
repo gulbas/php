@@ -7,6 +7,10 @@
 $title = "say hello";
 $hello = "Hello, <b>World!</b>";
 
+$a = (int)(3 != 1);
+$b = 2 === 2.0;
+$c = 0xFF; //Шиснацетеричная система счисления
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,7 +22,13 @@ $hello = "Hello, <b>World!</b>";
     <title><?= $title; ?></title>
 </head>
 <body>
-<?= $hello; ?>
+<?php
+echo $hello;
+var_dump($a);
+var_dump($b);
+var_dump($c);
+echo " 1 - правда(true), 0 лож(false)";
+?>
 </body>
 </html>
 

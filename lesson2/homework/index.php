@@ -96,7 +96,7 @@ switch ($a) {
 echo "<h3> Третье задание </h3>";
 
 $x = rand(-1000, 1000);
-$y = rand(-1000, 1000);
+$y = rand(1000, -1000);
 
 echo "\$x = {$x} и \$y = {$y} </br>";
 
@@ -124,10 +124,11 @@ echo 'Функция умножения (multiplication) $x и $y вернула
 function division($x, $y)
 {
     if ($y == 0) {
-        return $result = "Делить на ноль нельзя";
+        $result = "Делить на ноль нельзя";
     } else {
-        return $result = $x / $y;
+        $result = $x / $y;
     }
+    return $result;
 }
 
 echo 'Функция деления (division) $x и $y вернула результат равный = ' . division($x, $y) . ".</br>";
