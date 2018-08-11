@@ -20,7 +20,7 @@ echo "<h3> Первое задание </h3>";
 $a = rand(-1000, 1000);
 $b = rand(-10000, 10000);
 
-if ($a > 0 && $b > 0) {
+if ($a >= 0 && $b >= 0) {
     echo "Разность {$a} и {$b} = " . ($a - $b) . "</br>";
 } elseif ($a < 0 && $b < 0) {
     echo "Произведение {$a} и {$b} = " . ($a * $b) . "</br>";
@@ -40,38 +40,52 @@ echo "a =" . $a . "</br>";
 
 switch ($a) {
     case 0:
-        echo 0 . ',';
+        echo $a . ',';
+        $a++;
     case 1;
-        echo 1 . ',';
+        echo $a . ',';
+        $a++;
     case 2;
-        echo 2 . ',';
+        echo $a . ',';
+        $a++;
     case 3;
-        echo 3 . ',';
+        echo $a . ',';
+        $a++;
     case 4;
-        echo 4 . ',';
+        echo $a . ',';
+        $a++;
     case 5;
-        echo 5 . ',';
+        echo $a . ',';
+        $a++;
     case 6;
-        echo 6 . ',';
+        echo $a . ',';
+        $a++;
     case 7;
-        echo 7 . ',';
+        echo $a . ',';
+        $a++;
     case 8;
-        echo 8 . ',';
+        echo $a . ',';
+        $a++;
     case 9;
-        echo 9 . ',';
+        echo $a . ',';
+        $a++;
     case 10;
-        echo 10 . ',';
+        echo $a . ',';
+        $a++;
     case 11;
-        echo 11 . ',';
+        echo $a . ',';
+        $a++;
     case 12;
-        echo 12 . ',';
+        echo $a . ',';
+        $a++;
     case 13;
-        echo 13 . ',';
+        echo $a . ',';
+        $a++;
     case 14;
-        echo 14 . ',';
+        echo $a . ',';
+        $a++;
     case 15;
-        echo 15;
-        break;
+        echo $a . ',';
 }
 
 /*
@@ -82,7 +96,7 @@ switch ($a) {
 echo "<h3> Третье задание </h3>";
 
 $x = rand(-1000, 1000);
-$y = rand(-10000, 10000);
+$y = rand(-1000, 1000);
 
 echo "\$x = {$x} и \$y = {$y} </br>";
 
@@ -91,28 +105,32 @@ function addition($x, $y)
     return $x + $y;
 }
 
-echo 'Функция сложения (addition) $x и $y вернула результат равный = ' . addition($x, $y) . "</br>";
+echo 'Функция сложения (addition) $x и $y вернула результат равный = ' . addition($x, $y) . ".</br>";
 
 function subtraction($x, $y)
 {
     return $x - $y;
 }
 
-echo 'Функция вычитания (subtraction) $x и $y вернула результат равный = ' . subtraction($x, $y) . "</br>";
+echo 'Функция вычитания (subtraction) $x и $y вернула результат равный = ' . subtraction($x, $y) . ".</br>";
 
 function multiplication($x, $y)
 {
     return $x * $y;
 }
 
-echo 'Функция умножения (multiplication) $x и $y вернула результат равный = ' . multiplication($x, $y) . "</br>";
+echo 'Функция умножения (multiplication) $x и $y вернула результат равный = ' . multiplication($x, $y) . ".</br>";
 
 function division($x, $y)
 {
-    return $x / $y;
+    if ($y == 0) {
+        return $result = "Делить на ноль нельзя";
+    } else {
+        return $result = $x / $y;
+    }
 }
 
-echo 'Функция деления (division) $x и $y вернула результат равный = ' . division($x, $y) . "</br>";
+echo 'Функция деления (division) $x и $y вернула результат равный = ' . division($x, $y) . ".</br>";
 
 /*
 4. Реализовать функцию с тремя параметрами: function mathOperation($arg1, $arg2, $operation),
@@ -131,7 +149,6 @@ function mathOperation($arg1, $arg2, $operation)
         case 'multiplication';
         case 'division';
             echo "Функция ($operation) $arg1 и $arg2 вернула результат равный = " . $operation($arg1, $arg2) . "</br>";
-            break;
     }
 }
 
