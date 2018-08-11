@@ -18,10 +18,16 @@ if (isset($_FILES['picture'])) {
     <meta charset="UTF-8">
     <title>Моя галерея</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script type="text/javascript" src="./scripts/jquery-1.4.3.min.js"></script>
-    <script type="text/javascript" src="./scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <script type="text/javascript" src="./scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <link rel="stylesheet" type="text/css" href="./scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen"/>
+    <script
+            src="https://code.jquery.com/jquery-1.4.3.min.js"
+            integrity="sha256-+ACzmeXHpSVPxmu0BxF/44294FKHgOaMn3yH0pn4SGo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.pack.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.css" media="screen"/>
     <script type="text/javascript">
         $(document).ready(function () {
             $("a.photo").fancybox({
