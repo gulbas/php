@@ -146,14 +146,24 @@ function mathOperation($arg1, $arg2, $operation)
 {
     switch ($operation) {
         case 'addition';
+            $res = addition($arg1, $arg2);
+            break;
         case 'subtraction';
+            $res = subtraction($arg1, $arg2);
+            break;
         case 'multiplication';
+            $res = multiplication($arg1, $arg2);
+            break;
         case 'division';
-            echo "Функция ($operation) $arg1 и $arg2 вернула результат равный = " . $operation($arg1, $arg2) . "</br>";
+            $res = division($arg1, $arg2);
+            break;
+        default:
+            $res = "Не верная операция";
     }
+    return $res;
 }
 
-mathOperation($x, $y, 'subtraction');
+echo "Результат работы функции subtraction где x = {$x}, а y = {$y} равен " . mathOperation($x, $y, 'subtraction');;
 
 /*
 5. Посмотреть на встроенные функции PHP. Используя имеющийся HTML-шаблон, вывести текущий год в подвале при помощи
@@ -178,14 +188,15 @@ function power($val, $pow)
 {
     if ($pow == 0) {
         return 1;
-    }
-    if ($pow < 0) {
+    } elseif ($pow < 0) {
         return power(1 / $val, -$pow);
+    } elseif ($val == 0) {
+        return 0;
     }
     return $val * power($val, $pow - 1);
 }
 
-echo "Результат работы функции power = " . power(3, -4);
+echo "Результат работы функции power = " . power(3, 2);
 
 /*
 7. *Написать функцию, которая вычисляет текущее время и возвращает его в формате с правильными склонениями, например:
