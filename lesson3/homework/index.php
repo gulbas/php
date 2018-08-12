@@ -176,30 +176,65 @@ createMenu($menuArr);
 
 echo "еще вариант </br>";
 
-$mainMenu = [
-    'Главная' => '#',
-    'О компании' => '#',
-    'Подразделения в городах:' => ['Воронеж' => '#voz', 'Краснодар' => '#krd', 'Дополнительные офисы: ' =>
-        ['Красных Партизан', 'Лизы Чайкиной', 'Севреный']],
-    'Контакты' => '#'
+$menu = [
+    [
+        "title" => "Главная",
+        "href" => "/"
+    ],
+    [
+        "title" => "Каталог",
+        "href" => "/catalog/",
+        "subitems" => [
+            [
+                "title" => "Автомобили",
+                "href" => "/catalog/goods/"
+            ],
+            [
+                "title" => "Самолоеты",
+                "href" => "/catalog/goods/",
+                "subitems" => [
+                    [
+                        "title" => "Военные",
+                        "href" => "/catalog/goods/"
+                    ],
+                    [
+                        "title" => "Гражданские",
+                        "href" => "/catalog/goods/"
+                    ]
+                ]
+            ]
+        ]
+    ],
+    [
+        "title" => "Корабли",
+        "href" => "/catalog/goods/"
+    ],
 ];
-createMenu2($mainMenu, "<b>Главное меню</b>");
 
-function createMenu2($menuArr2, $name)
+$result = "<ul>";
+$result .= menuRender($menu);
+$result .= "</ul>";
+
+echo $result;
+
+
+function menuRender($menu_array)
 {
-    echo "<ul>$name";
-    foreach ($menuArr2 as $key => $val) {
-        if (is_array($val)) {
-            createMenu2($val, $key);
-            continue;
+    $result = "";
+
+    foreach ($menu_array as $item) {
+        $result .= "<li><a href='{$item['href']}'>{$item['title']}</a>";
+
+        if (isset($item["subitems"])) {
+            $result .= "<ul>";
+            $result .= menuRender($item["subitems"]);
+            $result .= "</ul>";
         }
-        if (is_numeric($key)) {
-            echo "<li>$val</li>";
-            continue;
-        }
-        echo "<a href='$val'><li>$key</li></a>";
+
+        $result .= "</li>";
     }
-    echo '</ul>';
+
+    return $result;
 }
 
 
@@ -244,56 +279,7 @@ printArr2($region);
 
 echo "<h3>Девятое задание</h3>";
 
-echo transformToUrl('Заглавная Страница');
-function transformToUrl($str)
-{
-    function translite2($str)
-    {
-        $replace = array(
-            "А" => "A", "а" => "a",
-            "Б" => "B", "б" => "b",
-            "В" => "V", "в" => "v",
-            "Г" => "G", "г" => "g",
-            "Д" => "D", "д" => "d",
-            "Е" => "E", "е" => "e",
-            "Ё" => "E", "ё" => "e",
-            "Ж" => "Zh", "ж" => "zh",
-            "З" => "Z", "з" => "z",
-            "И" => "I", "и" => "i",
-            "Й" => "I", "й" => "i",
-            "К" => "K", "к" => "k",
-            "Л" => "L", "л" => "l",
-            "М" => "M", "м" => "m",
-            "Н" => "N", "н" => "n",
-            "О" => "O", "о" => "o",
-            "П" => "P", "п" => "p",
-            "Р" => "R", "р" => "r",
-            "С" => "S", "с" => "s",
-            "Т" => "T", "т" => "t",
-            "У" => "U", "у" => "u",
-            "Ф" => "F", "ф" => "f",
-            "Х" => "Kh", "х" => "kh",
-            "Ц" => "Tc", "ц" => "tc",
-            "Ч" => "Ch", "ч" => "ch",
-            "Ш" => "Sh", "ш" => "sh",
-            "Щ" => "Shch", "щ" => "shch",
-            "Ы" => "Y", "ы" => "y",
-            "Э" => "E", "э" => "e",
-            "Ю" => "Iu", "ю" => "iu",
-            "Я" => "Ia", "я" => "ia",
-            "ъ" => "", "ь" => "''"
-        );
-        return strtr($str, $replace);
-    }
+$str = translite('Заглавная Страница');
 
-    function changeSpaces2($str, $separator = '_')
-    {
-        $arr = explode(' ', $str);
-        return implode($separator, $arr);
-    }
-
-    $str = translite2($str);
-    $str = changeSpaces2($str);
-    $str = "http://" .$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ."/" .$str;
-    return "url: " .$str;
-}
+$str = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "/" . $str;
+echo "url: " . $str;
